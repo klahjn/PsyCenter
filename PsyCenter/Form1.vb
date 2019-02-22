@@ -38,8 +38,8 @@ Public Class Form1
         StatusTime.Text = getTime()
         StatusDate.Text = getDate()
         StatusFreeSpace.Text = Decimal.Round(Freespace() / 1024 / 1024 / 1024 / 1024, 2).ToString + "TB"
-        StatusCPU.Text = "CPU:" + pcCPU.NextValue.ToString + "% "
-        StatusRAM.Text = "RAM:" + pcRAM.NextValue.ToString + "% "
+        StatusCPU.Text = "CPU:  " + Math.Round(pcCPU.NextValue).ToString + "%  "
+        StatusRAM.Text = "RAM:  " + Math.Round(pcRAM.NextValue).ToString + "%  "
         If CheckBox1.Checked = True Then Me.TopMost = True
         If CheckBox1.Checked = False Then Me.TopMost = False
         System.Threading.Thread.Sleep(65)
@@ -53,11 +53,17 @@ Public Class Form1
         If System.IO.File.Exists(Application.StartupPath + "\Files\Sounds\seize.wav") Then
             Playwav(Application.StartupPath + "\Files\Sounds\seize.wav")
         End If
-        While FB < 10
+        While FB < 17
             Me.Location = New Point(Me.Location.X + 20, Me.Location.Y + 20)
-            System.Threading.Thread.Sleep(30)
-            Me.Location = New Point(Me.Location.X - 20, Me.Location.Y - 20)
-            System.Threading.Thread.Sleep(20)
+            System.Threading.Thread.Sleep(15)
+            Me.Location = New Point(Me.Location.X - 10, Me.Location.Y - 10)
+            System.Threading.Thread.Sleep(15)
+            Me.Location = New Point(Me.Location.X - 10, Me.Location.Y - 10)
+            System.Threading.Thread.Sleep(15)
+            Me.Location = New Point(Me.Location.X + 5, Me.Location.Y - 5)
+            System.Threading.Thread.Sleep(15)
+            Me.Location = New Point(Me.Location.X - 5, Me.Location.Y + 5)
+            System.Threading.Thread.Sleep(15)
             FB += 1
         End While
     End Sub

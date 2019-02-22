@@ -33,7 +33,7 @@ Module PsyBase
         FS.Close()
     End Function
     Function Freespace()
-        Return My.Computer.FileSystem.Drives.Item(0).AvailableFreeSpace.ToString
+        Return Math.Round(My.Computer.FileSystem.Drives.Item(0).AvailableFreeSpace).ToString
     End Function
     Function Playwav(file)
         My.Computer.Audio.Play(file, AudioPlayMode.Background)
@@ -94,7 +94,7 @@ Module PsyBase
         Dim ipaddress As String = iPAddress1.ToString
         Return ipaddress
     End Function
-    Function GetMyIP() As String
+    Function GetMyIP2() As String
         Using wc As New Net.WebClient
             Return System.Text.Encoding.UTF8.GetString(wc.DownloadData("http://tools.feron.it/php/ip.php"))
         End Using
@@ -111,7 +111,7 @@ Module PsyBase
             serial_numbers.Substring(2)
         Return serial_numbers
     End Function
-    Function GetExternalIp() As String
+    Function GetMyIP() As String
         Try
             Dim ExternalIP As String
             ExternalIP = (New WebClient()).DownloadString("http://checkip.dyndns.org/")
